@@ -17,9 +17,11 @@ const {
   GENERATE_COMMAND
 } = require(`../constants`);
 const chalk = require(`chalk`);
-const FILE_SENTENCES_PATH = `./data/sentences.txt`;
-const FILE_TITLES_PATH = `./data/titles.txt`;
-const FILE_CATEGORIES_PATH = `./data/categories.txt`;
+
+const path = require(`path`);
+const FILE_SENTENCES_PATH = path.resolve(`./data/sentences.txt`);
+const FILE_TITLES_PATH = path.resolve(`./data/titles.txt`);
+const FILE_CATEGORIES_PATH = path.resolve(`./data/categories.txt`);
 
 
 const getPictureFileName = (number) => number > 10 ? `item${number}.jpg` : `item0${number}.jpg`;
@@ -38,7 +40,7 @@ const generateOffers = (count, titles, categories, sentences) => (
 const readContent = async (filePath) => {
   try {
     const content = await fs.readFile(filePath, `utf-8`);
-    return content.split(`\n`);
+    return content.split(`\n`).filter((stringItem) => stringItem !== ``);
   } catch (err) {
     console.error(chalk.red(err));
     return [];
