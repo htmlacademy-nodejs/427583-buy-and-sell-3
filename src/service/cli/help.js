@@ -1,6 +1,7 @@
 'use strict';
 
 const {HELP_COMMAND} = require(`../constants`);
+const chalk = require(`chalk`);
 
 module.exports = {
   name: HELP_COMMAND,
@@ -15,6 +16,6 @@ module.exports = {
         --generate <count>    формирует файл mocks.json
     `;
 
-    console.info(text);
+    console.info(chalk.gray(text));
   }
 };

@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require(`fs`);
+const fs = require(`fs`).promises;
 const {
   getRandomInt,
   shuffle,
@@ -19,6 +19,7 @@ const {
   Message,
   GENERATE_COMMAND
 } = require(`../constants`);
+const chalk = require(`chalk`);
 
 
 const getPictureFileName = (number) => number > 10 ? `item${number}.jpg` : `item0${number}.jpg`;
@@ -36,17 +37,16 @@ const generateOffers = (count) => (
 
 module.exports = {
   name: GENERATE_COMMAND,
-  run(args) {
+  async run(args) {
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     const content = JSON.stringify(generateOffers(countOffer));
 
-    fs.writeFile(FILE_NAME, content, (err) => {
-      if (err) {
-        return console.error(Message.ERROR);
-      }
-
-      return console.info(Message.SUCCESS);
-    });
+    try {
+      await fs.writeFile(FILE_NAME, content);
+      console.info(chalk.green(Message.SUCCESS));
+    } catch (err) {
+      console.error(chalk.red(Message.ERROR));
+    }
   }
 };
