@@ -8,6 +8,10 @@ const HELP_COMMAND = `--help`;
 
 const VERSION_COMMAND = `--version`;
 
+const SERVER_COMMAND = `--server`;
+
+const DEFAULT_PORT = 3000;
+
 const USER_ARGV_INDEX = 2;
 
 const ExitCode = {
@@ -39,6 +43,8 @@ module.exports = {
   GENERATE_COMMAND,
   HELP_COMMAND,
   VERSION_COMMAND,
+  SERVER_COMMAND,
+  DEFAULT_PORT,
   USER_ARGV_INDEX,
   ExitCode,
   DEFAULT_COUNT,
