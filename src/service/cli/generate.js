@@ -19,9 +19,9 @@ const {
 const chalk = require(`chalk`);
 
 const path = require(`path`);
-const FILE_SENTENCES_PATH = path.resolve(`./data/sentences.txt`);
-const FILE_TITLES_PATH = path.resolve(`./data/titles.txt`);
-const FILE_CATEGORIES_PATH = path.resolve(`./data/categories.txt`);
+const FILE_SENTENCES_PATH = path.resolve(__dirname, `../../../data`, `./sentences.txt`);
+const FILE_TITLES_PATH = path.resolve(__dirname, `../../../data`, `./titles.txt`);
+const FILE_CATEGORIES_PATH = path.resolve(__dirname, `../../../data`, `./categories.txt`);
 
 
 const getPictureFileName = (number) => number > 10 ? `item${number}.jpg` : `item0${number}.jpg`;
