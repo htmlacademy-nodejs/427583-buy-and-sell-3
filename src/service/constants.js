@@ -35,7 +35,10 @@ const PictureRestrict = {
 
 const Message = {
   ERROR: `Can't write data to file...`,
-  SUCCESS: `Operation success. File created.`
+  SUCCESS: `Operation success. File created.`,
+  NOT_FOUND: `Not found`,
+  ERROR_CREATE_SERVER: `Server creation error`,
+  AWAITING_CONNECTIONS: `Ожидаю соединений на `,
 };
 
 const HttpCode = {
