@@ -9,8 +9,6 @@ const commentValidator = require(`../middlewares/commentValidator`);
 const route = new Router();
 
 module.exports = (app, offerService, commentService) => {
-  app.use(`/offers`, route);
-
   route.get(`/`, (req, res) => {
     const offers = offerService.findAll();
     res.status(HttpCode.OK).json(offers);
@@ -22,7 +20,7 @@ module.exports = (app, offerService, commentService) => {
 
     if (!offer) {
       return res.status(HttpCode.NOT_FOUND)
-                .send(`${Message.NOT_FOUND_WITH}${offerId}`);
+                .json(`${Message.NOT_FOUND_WITH}${offerId}`);
     }
 
     return res.status(HttpCode.OK)
@@ -42,7 +40,7 @@ module.exports = (app, offerService, commentService) => {
 
     if (!existOffer) {
       return res.status(HttpCode.NOT_FOUND)
-                .send(`${Message.NOT_FOUND_WITH}${offerId}`);
+                .json(`${Message.NOT_FOUND_WITH}${offerId}`);
     }
 
     const updatedOffer = offerService.update(offerId, req.body);
@@ -50,13 +48,13 @@ module.exports = (app, offerService, commentService) => {
     return res.status(HttpCode.OK).json(updatedOffer);
   });
 
-  route.delete(`/:offerId`, offerExist(offerService), (res, req) => {
+  route.delete(`/:offerId`, offerExist(offerService), (req, res) => {
     const {offerId} = req.params;
     const offer = offerService.drop(offerId);
 
     if (!offer) {
       return res.status(HttpCode.NOT_FOUND)
-                .send(Message.NOT_FOUND);
+                .json(Message.NOT_FOUND);
     }
 
     return res.status(HttpCode.OK)
@@ -71,14 +69,14 @@ module.exports = (app, offerService, commentService) => {
       .json(comments);
   });
 
-  route.delete(`/:offerId/comments/:commentId`, offerExist(offerService), (res, req) => {
+  route.delete(`/:offerId/comments/:commentId`, offerExist(offerService), (req, res) => {
     const {offer} = res.locals;
     const {commentId} = req.params;
     const deletedComment = commentService.drop(offer, commentId);
 
     if (!deletedComment) {
       return res.status(HttpCode.NOT_FOUND)
-                .send(Message.NOT_FOUND);
+                .json(Message.NOT_FOUND);
     }
 
     return res.status(HttpCode.OK)
@@ -92,4 +90,6 @@ module.exports = (app, offerService, commentService) => {
     return res.status(HttpCode.CREATED)
               .json(comment);
   });
+
+  app.use(`/offers`, route);
 };
