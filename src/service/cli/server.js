@@ -3,43 +3,43 @@
 const {
   SERVER_COMMAND,
   DEFAULT_PORT,
-  FILE_NAME,
   HttpCode,
-  Message
+  Message,
+  API_PREFIX
 } = require(`../constants`);
 const chalk = require(`chalk`);
-const fs = require(`fs`).promises;
 const express = require(`express`);
+const getMockData = require(`../lib/get-mock-data`);
+const getApiRoutes = require(`../api`);
 
 const app = express();
-app.use(express.json());
-
-app.get(`/offers`, async (req, res) => {
-  try {
-    const fileContent = await fs.readFile(FILE_NAME);
-    const mocks = JSON.parse(fileContent);
-    res.json(mocks);
-  } catch (err) {
-    res.status(HttpCode.INTERNAL_SERVER_ERROR).send(err);
-  }
-});
-
-app.use((req, res) => res
-  .status(HttpCode.NOT_FOUND)
-  .send(Message.NOT_FOUND));
 
 module.exports = {
   name: SERVER_COMMAND,
-  run(args) {
+  async run(args) {
     const [customPort] = args;
     const port = Number.parseInt(customPort, 10) || DEFAULT_PORT;
+    const routes = await getApiRoutes();
 
-    app.listen(port, (err) => {
-      if (err) {
-        return console.error(chalk.red(Message.ERROR_CREATE_SERVER));
-      }
+    app.use(express.json());
+    app.use(API_PREFIX, routes);
+    app.use((req, res) => res
+      .status(HttpCode.NOT_FOUND)
+      .send(Message.NOT_FOUND));
 
-      return console.info(chalk.green(`${Message.AWAITING_CONNECTIONS}${port}`));
-    });
+    try {
+      await getMockData();
+
+      app.listen(port, (err) => {
+        if (err) {
+          return console.error(chalk.red(Message.ERROR_CREATE_SERVER));
+        }
+
+        return console.info(chalk.green(`${Message.AWAITING_CONNECTIONS}${port}`));
+      });
+    } catch (err) {
+      console.error(chalk.red(err));
+      process.exit(1);
+    }
   }
 };

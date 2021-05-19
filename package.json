@@ -8,7 +8,8 @@
     "eslint": "eslint --ext .js src/",
     "start": "node ./src/service/service.js",
     "start.dev": "nodemon ./src/main.js",
-    "start-front-server": "node ./src/express/index.js"
+    "start-front-server": "node ./src/express/index.js",
+    "start-cli-server": "node ./src/service/service.js --server"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   "dependencies": {
     "chalk": "4.1.0",
     "express": "4.17.1",
+    "nanoid": "3.1.22",
     "pug": "2.0.4"
   }
 }
