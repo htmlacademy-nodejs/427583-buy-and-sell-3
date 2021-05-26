@@ -67,6 +67,11 @@ const Env = {
   PRODUCTION: `production`
 };
 
+const OfferType = {
+  OFFER: `offer`,
+  SALE: `sale`,
+};
+
 module.exports = {
   DEFAULT_COMMAND,
   GENERATE_COMMAND,
@@ -86,5 +91,6 @@ module.exports = {
   offerKeys,
   commentKeys,
   API_PREFIX,
-  Env
+  Env,
+  OfferType
 };
