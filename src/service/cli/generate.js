@@ -8,10 +8,10 @@ const {
   Message,
   GENERATE_COMMAND,
   MAX_ID_LENGTH,
+  OfferType
 } = require(`../constants`);
 const fs = require(`fs`).promises;
 const {getRandomInt, shuffle} = require(`../utils`);
-const {OfferType} = require(`../mocks/mocks`);
 const chalk = require(`chalk`);
 const path = require(`path`);
 const {nanoid} = require(`nanoid`);

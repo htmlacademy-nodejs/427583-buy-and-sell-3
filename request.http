@@ -16,13 +16,13 @@ GET http://localhost:3000/api/offers HTTP/1.1
 
 # Запрашивает объявление с идентификатором :id
 
-GET http://localhost:3000/api/offers/yHsDe1 HTTP/1.1
+GET http://localhost:3000/api/offers/yVJIq6 HTTP/1.1
 
 ###
 
 # Удаление объявления с идентификатором :id
 
-DELETE http://localhost:3000/api/offers/yHsDe- HTTP/1.1
+DELETE http://localhost:3000/api/offers/pbDeqS HTTP/1.1
 
 ###
 

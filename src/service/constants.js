@@ -41,6 +41,7 @@ const Message = {
   AWAITING_CONNECTIONS: `Ожидаю соединений на `,
   NOT_FOUND_WITH: `Not found with `,
   BAD_REQUEST: `Bad request`,
+  ROUTE_NOT_FOUND: `Route not found: `
 };
 
 const HttpCode = {
@@ -61,6 +62,16 @@ const commentKeys = [`text`];
 
 const API_PREFIX = `/api`;
 
+const Env = {
+  DEVELOPMENT: `development`,
+  PRODUCTION: `production`
+};
+
+const OfferType = {
+  OFFER: `offer`,
+  SALE: `sale`,
+};
+
 module.exports = {
   DEFAULT_COMMAND,
   GENERATE_COMMAND,
@@ -80,4 +91,6 @@ module.exports = {
   offerKeys,
   commentKeys,
   API_PREFIX,
+  Env,
+  OfferType
 };
