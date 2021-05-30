@@ -1,9 +1,17 @@
 'use strict';
 
 const {Router} = require(`express`);
+const api = require(`../api`).getAPI();
 const myRouter = new Router();
 
-myRouter.get(`/`, (req, res) => res.render(`my/my-tickets`));
-myRouter.get(`/comments`, (req, res) => res.render(`my/comments`));
+myRouter.get(`/`, async (req, res) => {
+  const offers = await api.getOffers();
+  res.render(`my/my-tickets`, {offers});
+});
+
+myRouter.get(`/comments`, async (req, res) => {
+  const offers = await api.getOffers();
+  res.render(`my/comments`, {offers});
+});
 
 module.exports = myRouter;
