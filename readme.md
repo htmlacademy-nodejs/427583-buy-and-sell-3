@@ -1,7 +1,7 @@
 # Учебный проект «Куплю. Продам» [![Build status][travis-image]][travis-url]
 
 * Студент: [Роман Быков](https://up.htmlacademy.ru/nodejs/3/user/427583).
-* Наставник: [Никита Куцелай](https://up.htmlacademy.ru/nodejs/3/user/32750).
+* Наставник: [Юрий Кучма](https://up.htmlacademy.ru/nodejs/3/user/74996).
 
 ---
 
