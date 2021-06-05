@@ -35,7 +35,7 @@ class API {
   }
 
   async getCategories() {
-    return this._load(`/categories`);
+    return this._load(`/category`);
   }
 
   async createOffer(data) {

@@ -2,9 +2,9 @@ extends ../layout.pug
 
 block content
   main.page-content
-  section.comments
-    div(class='comments__wrapper')
-      h1.visually-hidden Страница комментариев
+    section.comments
+      div(class='comments__wrapper')
+        h1.visually-hidden Страница комментариев
         each offer in offers
           .comments__block
             .comments__header
@@ -24,4 +24,4 @@ block content
                     .comment-card__content
                       p
                         | #{comment.text}
-                    button.comment-card__delete.js-delete(type="button") Удалить
+                  button.comment-card__delete.js-delete(type="button") Удалить

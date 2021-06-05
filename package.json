@@ -12,8 +12,7 @@
     "start::debug::win": "chcp.com 65001 && cross-env NODE_ENV=development node ./src/service/service.js",
     "start.dev": "nodemon ./src/main.js",
     "start-front-server": "node ./src/express/index.js",
-    "start-server": "node ./src/service/service.js --server"
-
+    "start-server": "nodemon ./src/service/service.js --server"
   },
   "repository": {
     "type": "git",
@@ -38,6 +37,7 @@
     "chalk": "4.1.0",
     "cross-env": "7.0.3",
     "express": "4.17.1",
+    "multer": "1.4.2",
     "nanoid": "3.1.22",
     "pino": "6.11.3",
     "pug": "2.0.4"
