@@ -23,7 +23,7 @@ const FILE_TITLES_PATH = path.resolve(__dirname, `../../../data`, `titles.txt`);
 const FILE_CATEGORIES_PATH = path.resolve(__dirname, `../../../data`, `categories.txt`);
 const FILE_COMMENTS_PATH = path.resolve(__dirname, `../../../data`, `comments.txt`);
 
-const getPictureFileName = (number) => number > 10 ? `item${number}.jpg` : `item0${number}.jpg`;
+const getPictureFileName = (number) => number > 9 ? `item${number}.jpg` : `item0${number}.jpg`;
 
 const generateComments = (count, comments) => (
   Array(count).fill({}).map(() => ({
