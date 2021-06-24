@@ -33,7 +33,7 @@ CREATE TABLE comments(
 CREATE TABLE offer_categories(
   offer_id integer NOT NULL,
   category_id integer NOT NULL,
-  PRIMARY KEY (offer_id, category_id) GENERATED ALWAYS AS IDENTITY,
+  PRIMARY KEY (offer_id, category_id),
   FOREIGN KEY (offer_id) REFERENCES offers(id),
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
