@@ -10,8 +10,10 @@ const {
   MAX_ID_LENGTH,
   OfferType
 } = require(`../constants`);
+
+const {getRandomInt, shuffle, getPictureFileName} = require(`../utils`);
+
 const fs = require(`fs`).promises;
-const {getRandomInt, shuffle} = require(`../utils`);
 const chalk = require(`chalk`);
 const path = require(`path`);
 const {nanoid} = require(`nanoid`);
@@ -22,8 +24,6 @@ const FILE_SENTENCES_PATH = path.resolve(__dirname, `../../../data`, `sentences.
 const FILE_TITLES_PATH = path.resolve(__dirname, `../../../data`, `titles.txt`);
 const FILE_CATEGORIES_PATH = path.resolve(__dirname, `../../../data`, `categories.txt`);
 const FILE_COMMENTS_PATH = path.resolve(__dirname, `../../../data`, `comments.txt`);
-
-const getPictureFileName = (number) => number > 9 ? `item${number}.jpg` : `item0${number}.jpg`;
 
 const generateComments = (count, comments) => (
   Array(count).fill({}).map(() => ({
