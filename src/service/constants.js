@@ -10,6 +10,8 @@ const VERSION_COMMAND = `--version`;
 
 const SERVER_COMMAND = `--server`;
 
+const FILL_COMMAND = `--fill`;
+
 const DEFAULT_PORT = 3000;
 
 const USER_ARGV_INDEX = 2;
@@ -78,6 +80,7 @@ module.exports = {
   HELP_COMMAND,
   VERSION_COMMAND,
   SERVER_COMMAND,
+  FILL_COMMAND,
   DEFAULT_PORT,
   USER_ARGV_INDEX,
   ExitCode,
