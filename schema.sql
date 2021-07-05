@@ -34,7 +34,7 @@ CREATE TABLE comments(
     ON UPDATE CASCADE,
   FOREIGN KEY (offer_id) REFERENCES offers(id)
     ON DELETE CASCADE
-    ON UPDATE CASCADE,
+    ON UPDATE CASCADE
 );
 CREATE TABLE offer_categories(
   offer_id integer NOT NULL,
